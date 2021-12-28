@@ -16,11 +16,9 @@
                     <p>Gmail</p>
                 </div>
             </div>
-            <div class="login-alert">
-
-            </div>
+            <div class="login-alert"></div>
             <p class="p-title">Hoặc đăng nhập bằng tài khoản của bạn</p>
-            <form action="" method="POST" class="form" id="form-1">
+            <form action="/login" method="POST" class="form" id="form-1">
                 <div class="form-group">
                     <i class="far fa-envelope"></i>
                     <input id="username" name="username" type="text" placeholder="Username or Email"
@@ -28,8 +26,7 @@
                     <span class="form-message"></span>
                 </div>
                 <div class="form-group">
-                    <input id="password" name="password" type="password" placeholder="Password"
-                        class="form-control" />
+                    <input id="password" name="password" type="password" placeholder="Password" class="form-control" />
                     <i class="fas fa-lock"></i>
                     <span class="form-message"></span>
                 </div>
@@ -40,7 +37,7 @@
                     </div>
                     <a href="#" class="m-0">Quên mật khẩu?</a>
                 </div>
-                <div class="form-submit">Đăng Nhập</div>
+                <button type="submit" class="form-submit">Đăng Nhập</button>
             </form>
             <div class="login-policy">
                 <p>Chúng tôi không sử dụng thông tin của bạn với bất kỳ mục đích nào. Bằng cách đăng nhập
@@ -49,4 +46,3 @@
         </div>
     </div>
 </div>
-<script src="./js/handleLogin.js"></script>

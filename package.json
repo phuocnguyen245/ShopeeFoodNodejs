@@ -20,6 +20,7 @@
     "express-ejs-layouts": "^2.5.1",
     "express-fileupload": "^1.2.1",
     "express-session": "^1.17.2",
+    "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
     "mongodb": "^4.2.2",
     "mongoose": "^6.1.3"

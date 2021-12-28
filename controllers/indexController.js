@@ -1,10 +1,20 @@
 require('../models/database')
 const Category = require('../models/Category')
 const Shop = require('../models/Shop')
+const User = require('../models/Users')
+
+// require('dotenv').config()
+
+// const express = require('express')
+// const jwt = require('jsonwebtoken')
+
+// const app = express()
+
+// app.use(express.json())
 
 // Homepage
 
-exports.homepage = async (req, res) => {
+exports.renderHomepage = async (req, res) => {
     try {
         const limitCategory = 5
         const limitShop = 12
@@ -25,7 +35,7 @@ exports.homepage = async (req, res) => {
             shopValue: getShops,
             categoryValue: getCateByShop,
         };
-        res.render('index', { title: 'HomePage', shop: shopeeValue });
+        res.render('index', { title: 'HomePage' , shop: shopeeValue });
     } catch (error) {
         res.status(500).send({ message: error.message || "Error Occured" });
     }
@@ -33,7 +43,7 @@ exports.homepage = async (req, res) => {
 
 // Find Category
 
-exports.findCategories = async (req, res) => {
+exports.renderCategoryPage = async (req, res) => {
     try {
         let cateID = Number(req.params.id);
         console.log(typeof cateID);
@@ -45,13 +55,13 @@ exports.findCategories = async (req, res) => {
     }
 }
 
-exports.basicMenu = async (req, res) => {
+exports.renderCreate = async (req, res) => {
     const infoErrorsObj = req.flash('infoError')
     const infoSubmitObj = req.flash('infoSubmit')
     res.render('createNew', { title: 'Submit', infoErrorsObj, infoSubmitObj });
 }
 
-exports.createNew = async (req, res) => {
+exports.handleCreate = async (req, res) => {
     try {
 
         let imageUploadFile;
@@ -94,7 +104,7 @@ exports.createNew = async (req, res) => {
     }
 }
 
-exports.updateDelete = async (req, res) => {
+exports.renderCRUDPage = async (req, res) => {
     try {
         const shops = await Shop.find({})
         res.render('manaInterface', { shops });
@@ -103,19 +113,20 @@ exports.updateDelete = async (req, res) => {
     }
 }
 
-exports.deleteById = async (req, res) => {
+exports.handleDelete = async (req, res) => {
     try {
         await Shop.findByIdAndDelete({ _id: req.params.id })
-        res.redirect('/manaInterface');
+        res.redirect('/manaInterface')
+
     } catch (error) {
         res.status(500).send({ message: error.message || "Error Occured" });
     }
 }
 
-exports.updateById = async (req, res) => {
+exports.renderUpdateForm = async (req, res) => {
     try {
         const shop = await Shop.find({ _id: req.params.id })
-        res.render('updateForm', {title: 'Update Shop' ,shop});
+        res.render('updateForm', { title: 'Update Shop', shop });
     } catch (error) {
         res.status(500).send({ message: error.message || "Error Occured" });
     }
@@ -143,17 +154,45 @@ exports.handleUpdate = async (req, res) => {
         }
 
         const { shopName, address, cost, category, img } = req.body
-        await Shop.findOneAndUpdate({_id: req.params.id}, { shopName, address, cost, category, img: newImageName })
+        await Shop.findOneAndUpdate({ _id: req.params.id }, { shopName, address, cost, category, img: newImageName })
         res.redirect('/manaInterface')
     } catch (error) {
         res.status(500).send({ message: error.message || "Error Occured" });
     }
 }
 
-exports.handleLogin = async (req, res) =>{
-    try{
+exports.renderLogin = async (req, res) => {
+    try {
         res.render('login')
-    }catch (error) {
+    } catch (error) {
+        res.status(500).send({ message: error.message || "Error Occured" });
+    }
+}
+
+exports.handleLogin = async (req, res) => {
+    try {
+        const userLogin = {
+            username: req.body.username,
+            password: req.body.password
+        }
+        const getUser = await User.find({ username: userLogin.username, password: userLogin.password })
+        const getUserLoginRole = getUser.map((user => user.role))
+
+        if (getUser.length > 0) {
+            // const accessToken = jwt.sign(getUser, process.env.ACCESS_TOKEN_SECRET,{
+            //     expiresIn:'15s'
+            // })
+            // res.json({accessToken})
+            if(getUserLoginRole == 'admin') {
+                res.redirect('/manaInterface')
+            }else{
+                res.redirect('/')
+            }
+        } else {
+            res.redirect('/login')
+        }
+
+    } catch (error) {
         res.status(500).send({ message: error.message || "Error Occured" });
     }
 }
