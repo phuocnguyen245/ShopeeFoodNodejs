@@ -41,8 +41,6 @@ exports.renderHomepage = async (req, res) => {
     }
 }
 
-// Find Category
-
 exports.renderCategoryPage = async (req, res) => {
     try {
         let cateID = Number(req.params.id);

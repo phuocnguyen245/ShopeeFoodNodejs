@@ -14,9 +14,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(expressLayouts)
 app.use(express.json())
-app.use(cookieParser('CookingBlogSecure'));
+app.use(cookieParser('ShopeeFoodSecret'));
 app.use(session({
-  secret: 'CookingBlogSecretSession',
+  secret: 'ShopeeFoodSecretSession',
   saveUninitialized: true,
   resave: true
 }));
