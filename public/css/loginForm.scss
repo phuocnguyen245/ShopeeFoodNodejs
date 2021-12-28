@@ -1,0 +1,190 @@
+$primary-color: #f14d2d;
+$primary-textColor: black;
+$blue: #0288d1;
+.login-form {
+  margin-top: 70px;
+  padding: 40px;
+  background: url(../img/main-banner.jpg);
+  height: 100vh;
+  .login-container {
+    width: calc(50% + 30px);
+    padding: 30px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    h4 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .button-group {
+      margin-bottom: 20px;
+      .button-control {
+        position: relative;
+        height: 35px;
+        line-height: 35px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        font-size: 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        &:nth-child(1) {
+          background: #329900;
+          i {
+            color: #329900;
+          }
+        }
+        &:nth-child(2) {
+          background: #187caa;
+          i {
+            color: #187caa;
+          }
+        }
+        &:nth-child(3) {
+          background: #ff5252;
+          i {
+            color: #ff5252;
+          }
+        }
+        p {
+          color: #fff;
+        }
+        i {
+          width: 25px;
+          height: 25px;
+          background: #fff;
+          border-radius: 50%;
+          line-height: 25px;
+          position: absolute;
+          left: 10px;
+          top: 5px;
+        }
+      }
+    }
+    .login-alert {
+      display:none;
+      margin-top: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      background-color: #f2dede;
+      text-align: left;
+      color: #a94442;
+      transition: 0.5s;
+    }
+    .p-title {
+      font-size: 13px;
+      margin: 10px 0 10px;
+      color: #464646;
+    }
+    .form {
+      .form-group {
+        margin: 0;
+        position: relative;
+        .form-control {
+          padding: 9px 10px 9px 40px;
+        }
+        i {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 10px;
+          font-size: 18px;
+          color: #9fa9aa;
+        }
+        &:nth-child(1) {
+          .form-control {
+            border-bottom-left-radius: unset;
+            border-bottom-right-radius: unset;
+            border-bottom: none;
+          }
+        }
+        &:nth-child(2) {
+          .form-control {
+            border-top-left-radius: unset;
+            border-top-right-radius: unset;
+            // border-top: none;
+          }
+        }
+        &:nth-child(3) {
+          margin: 10px 0;
+          font-size: 15px;
+          .row {
+            padding: 0 15px;
+            input {
+              margin-right: 5px;
+              cursor: pointer;
+            }
+          }
+          a {
+            text-decoration: none;
+          }
+        }
+      }
+      .form-submit {
+        width: 100%;
+        text-transform: uppercase;
+        background-color: #0288d1;
+        border: none;
+        color: #fff;
+        border-radius: 3px;
+        padding: 5px 0;
+        cursor: pointer;
+      }
+    }
+    .login-policy {
+      color: #707070;
+      font-size: 14px;
+      text-align: center;
+      margin: 30px 0;
+      u {
+        color: #0288d1;
+      }
+    }
+  }
+  p,
+  label,
+  h4 {
+    color: #fff !important;
+  }
+}
+@media (min-width: 740px) and (max-width: 1024px) {
+  .login-form {
+    .container {
+      width: 100%;
+      .login-container {
+        width: calc(90%);
+      }
+    }
+  }
+}
+@media (max-width: 739px) {
+  header {
+    display: none;
+  }
+  .login-form {
+    margin: 0;
+    padding: auto 20px;
+    background: url(../img/bg-login.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+    .container {
+      width: 100%;
+      .login-container {
+        background-color: transparent;
+        width: calc(100%);
+        padding: 10px;
+      }
+      p,
+      label {
+        color: #fff !important;
+        font-size: 13px !important;
+      }
+    }
+  }
+}
+@import "header-footer";

@@ -1,0 +1,69 @@
+ @font-face {
+    font-family: HelveticaNeuee;
+    src: url("../fonts/helveticaneue.ttf")
+}
+* {
+    box-sizing: border-box;
+    font-family: HelveticaNeuee;
+    letter-spacing: 0.5px;
+    color: #252525;
+}
+.flex{
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+}
+
+html, body {
+    overflow-x: hidden;
+    line-height: 1.6rem;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+.shopeefoodlogo{
+    height:30px;
+}
+.dropdown-item{
+    width: unset;
+}
+
+.container{
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 !important;
+}
+.active-color{
+    display: none;
+    height: calc(100% - 4px);
+    border-bottom: 4px solid  #f14d2d !important;
+    font-weight: bold;
+}
+.active-color p{
+    color: #f14d2d;
+}
+.primary-color{
+    color: #f14d2d;
+}
+.fz-14{
+    font-size: 14px;
+}
+.t-w{
+    color: #fff;
+}
+.absolute{
+    position: absolute;
+}
+.block{
+    display: block;
+}
+.show{
+    left: unset !important;
+}
+section .right-wrapper {
+    background-color: #fff;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 12px 30px;
+    border-radius: 4px;
+}

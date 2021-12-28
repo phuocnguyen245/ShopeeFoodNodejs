@@ -1,0 +1,154 @@
+<div class="content-container-left">
+    <div class="container">
+        <div class="left t-w col-5">
+            <div class="left__text t-w">
+                <h1>Đặt đồ ăn, giao hàng từ 20'...</h1>
+                <p class="t-w">Có 9047 Địa Điểm Ở Đà Nẵng Từ 06:00 - 22:00</p>
+            </div>
+            <div class="left__search col-12 col-sm-12 col-md-12 p-0">
+                <input type="text" placeholder="Tìm địa điểm, món ăn, địa chỉ" />
+                <a href="">
+                    <button class="btn">
+                        <i class="fa fa-search text-white"></i>
+                    </button>
+                </a>
+            </div>
+            <div class="left__menu flex">
+                <a class="left__menu__item" href="#">All</a>
+                <a class="left__menu__item" href="#">Đồ ăn</a>
+                <a class="left__menu__item" href="#">Đồ uống</a>
+                <a class="left__menu__item" href="#">Đồ chay</a>
+                <a class="left__menu__item" href="#">Bánh kem</a>
+                <a class="left__menu__item" href="#">Tráng miệng</a>
+                <a class="left__menu__item" href="#">Đồ ăn</a>
+                <a class="left__menu__item" href="#">Đồ ăn</a>
+                <a class="left__menu__item" href="#">Đồ ăn</a>
+                <a class="left__menu__item" href="#">Đồ ăn</a>
+            </div>
+            <div class="left__text">
+                <p class="t-w">Sử dụng App ShopeeFood để có nhiều giảm giá
+                    <br>và trải nghiệm tốt hơn
+                </p>
+            </div>
+            <div class="left__connect flex justify-content-start">
+                <div class="pr-4">
+                    <a href="#">
+                        <img src="./img/AppStore-vn.png" alt="">
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="./img/PlayStore-vn.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-container-right clearfix">
+    <div class="container">
+        <div class="right">
+            <div class="right__local">
+                <span><b>Địa chỉ</b></span>
+                <span>Chọn địa chỉ giao hàng</span>
+            </div>
+            <% const formatter = new Intl.NumberFormat("vi-VI", { style: "currency", currency: "VND", minimumFractionDigits: 0 }) %>
+            <% shop.categoryValue.map(cate=>{ %>
+            <section class="right-wrapper">
+                <div class="right__title"><span><b><%- cate.categoryName %></b></span></div>
+                <div class="right__list row m-0">
+                    <% const shopByCategory=shop.shopValue.filter((shop)=> { %>
+                        <% return shop.category === cate.id %>    
+                    <% }) %>
+                    <% shopByCategory.map((shop) => { %>
+                        <% const cost = formatter.format(shop.cost) %>
+
+                        <div class="col-12 col-sm-6 col-md-3 col-lg-4 col-xl-4 p-1 right-item" id="<%- shop.id %>">
+                            <a class="" href="/shops/<%- shop._idhn %>">
+                                <img src="../img/<%- shop.img %>" alt="">
+                                <div>
+                                    <div class="right-item__desc">
+                                        <p class="m-0"title="<%- shop.shopName %>"><%- shop.shopName %>
+                                        <p class="m-0"title="<%- shop.address %>"><%- shop.address %></p>
+                                    </div>
+                                    <div class="row flex justify-content-start flex-nowrap ml-1 right-item__disc">
+                                        <div class="flex justify-content-start pl-1 pr-1">
+                                            <i class="fas fa-tag pr-1 "></i>
+                                            <p class="m-0"><%- cost %></p>
+                                        </div>
+                                        <div class="flex justify-content-start align-center pl-1 pr-1">
+                                            <i class="fa fa-dollar pr-1"></i>
+                                            <p class="m-0">Giá 40k</p>
+                                        </div>
+                                    </div>
+                                    <div class="row flex justify-content-start flex-nowrap right-item__disc">
+                                        <div class="flex justify-content-start align-center mr-1">
+                                            <i class="fas fa-tag pl-1"></i>
+                                            <p class="m-0 pr-1">Mã giảm 20k</p>
+                                        </div>
+                                        <div class="flex justify-content-start align-center">
+                                            <i class="fas fa-motorcycle pl-1 pr-1"></i>
+                                            <p class="m-0 pr-1">Giá 20k</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    <% }) %>
+                </div>
+                <a href="/categories/<%- cate.id %>">See more</a>
+            </section>
+            <% }) %>
+            
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <section class="container">
+        <div class="banner-container banner-1">
+            <div class="banner-container__text">
+                <h4>Đơn hàng của bạn sẽ được bảo quản như thế nào?</h4>
+                <p>ShopeeFood sẽ bảo quản đơn của bạn bằng túi & thùng để chống nắng mưa, giữ nhiệt... trên
+                    đường đi một cách tốt nhất.</p>
+            </div>
+            <div class="banner-container__img">
+                <img class="" src="../img/banner1.png" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="banner-container">
+            <div class="banner-container__text">
+                <h4>ShopeeFood Merchant App</h4>
+                <p>- <strong>ShopeeFood Merchant </strong>là ứng dụng quản lý đơn hàng cho các nhà hàng đối
+                    tác của dịch vụ đặt món tận nơi</p>
+                <p>- <strong>ShopeeFood.vn </strong>luôn sẵn sàng hợp tác với các nhà hàng, quán ăn, cafe...
+                    để mở rộng kinh doanh cũng như gia tăng khách hàng. Hãy kết nối vào hệ thống đặt và giao
+                    hàng để giảm bớt chi phí quản lý, vận hành, marketing, công nghệ...</p>
+                <p>Đăng ký tham gia: <b>tại đây</b></p>
+            </div>
+            <div class="banner-container__img">
+                <img class="img-absolute" src="../img/banner2.png" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="banner-container">
+            <div class="banner-container__text">
+                <h4 class="primary-color">ShopeeFood.vn <b>Hợp tác nhân viên giao nhận - ShopeeFood
+                        Driver</b></h4>
+                <p>Giúp bạn tăng thu nhập trong thời gian rảnh rỗi</p>
+                <p><strong>ShopeeFood </strong>tìm kiếm hợp tác với các cá nhân để thực hiện việc giao hàng,
+                    chúng tôi sẽ cung cấp ứng dụng (app), 1 số dụng cụ cần thiết để bạn có thể tiếp nhận &
+                    giao hàng, kiếm thêm thu nhập</p>
+                <p>Đăng ký tham gia: <b>tại đây</b> hoặc gửi Email qua<b> tuyendung@gofast.vn </b>- hoặc gọi
+                    qua số điện thoại (028) 7109 9179.</p>
+            </div>
+            <div class="banner-container__img">
+                <img class="img-absolute2" src="../img/banner3.png" alt="">
+            </div>
+        </div>
+    </section>
+</div>

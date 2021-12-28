@@ -1,0 +1,176 @@
+.scroll-to-top {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  bottom: 30px;
+  right: 50px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 200;
+  i {
+    color: white;
+  }
+  animation: slideInBottom ease 1s;
+  display: none;
+}
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (min-width: 1024px) {
+}
+
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1023px) {
+  .content-container-left {
+    display: none;
+  }
+  .content-container-right {
+    // background: url("../img/verticalImage.jpg");
+    // background-size: cover;
+    // overflow: hidden;
+    // top: 60px;
+    // right: -10px;
+    // left: 0;
+    .container {
+      .right {
+        width: 100% !important;
+        margin-bottom: 0 !important;
+        min-height: unset !important;
+      }
+    }
+  }
+  section {
+    .banner-container.banner-1 {
+      padding: 50px 0 50px 150px;
+      img {
+        width: 90%;
+      }
+    }
+  }
+  .mobile-nav {
+    display: block;
+  }
+  .scroll-to-top {
+    bottom: 90px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 739px) {
+  .content-container-left {
+    display: none;
+  }
+  .content-container-right {
+    .container {
+      width: 100%;
+      .right {
+        width: 100%;
+        float: none;
+        margin-top: 20px;
+        margin-bottom: 50px;
+        .right__local {
+          padding: 10px;
+        }
+        .right-wrapper {
+          padding: 0px;
+          .right__list {
+            .right-item {
+              padding: 0;
+              a {
+                display: flex;
+                border: none;
+                border-radius: none;
+                img {
+                  width: 80px;
+                  height: 80px;
+                  border-radius: none;
+                  overflow: unset;
+                }
+                .right-item__desc {
+                  padding: 0;
+                  p {
+                    padding-bottom: 5px;
+                    &:first-child {
+                      font-size: 13px;
+                      height: 20px;
+                      line-height: 20px;
+                    }
+                    &:nth-child(2) {
+                      font-size: 13px;
+                      height: 20px;
+                      line-height: 20px;
+                      border-bottom: none;
+                    }
+                  }
+                }
+                .right-item__disc {
+                  height: 20px;
+                  line-height: 20px;
+                  &:nth-child(2) {
+                    div {
+                      &:nth-child(2) {
+                        display: flex !important;
+                      }
+                    }
+                  }
+                  &:nth-child(3) {
+                    display: flex !important;
+                    margin-left: -10px;
+                    div {
+                      border: 1px solid #ccc;
+                      border-radius: 20px;
+                      background: #f8f8f8f8;
+                      i {
+                        font-size: 11px;
+                        &:first-child {
+                          color: $primary-color;
+                        }
+                      }
+                      p {
+                        font-size: 11px;
+                      }
+                      &:last-child {
+                        i {
+                          color: $blue;
+                        }
+                      }
+                    }
+                  }
+                  div {
+                    height: 20px;
+                    line-height: 20px;
+                    i {
+                      font-size: 13px;
+                    }
+                    p {
+                      height: 100%;
+                      font-size: 13px;
+                      font-weight: normal;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .mobile-nav {
+    display: block;
+  }
+  .scroll-to-top {
+    display: none !important;
+  }
+  .active-color{
+    display: none !important;
+  }
+}
