@@ -1,16 +1,14 @@
 require('../models/database')
+require('dotenv').config()
 const Category = require('../models/Category')
 const Shop = require('../models/Shop')
 const User = require('../models/Users')
 
-// require('dotenv').config()
+const express = require('express')
+const app = express()
+const jwt = require('jsonwebtoken')
 
-// const express = require('express')
-// const jwt = require('jsonwebtoken')
-
-// const app = express()
-
-// app.use(express.json())
+app.use(express.json())
 
 // Homepage
 
@@ -35,7 +33,7 @@ exports.renderHomepage = async (req, res) => {
             shopValue: getShops,
             categoryValue: getCateByShop,
         };
-        res.render('index', { title: 'HomePage' , shop: shopeeValue });
+        res.render('index', { title: 'HomePage', shop: shopeeValue });
     } catch (error) {
         res.status(500).send({ message: error.message || "Error Occured" });
     }
@@ -105,7 +103,7 @@ exports.handleCreate = async (req, res) => {
 exports.renderCRUDPage = async (req, res) => {
     try {
         const shops = await Shop.find({})
-        res.render('manaInterface', { shops });
+        res.render('manaInterface',  {shops});
     } catch (error) {
         res.status(500).send({ message: e.message || "Error Occured" });
     }
@@ -174,22 +172,26 @@ exports.handleLogin = async (req, res) => {
             password: req.body.password
         }
         const getUser = await User.find({ username: userLogin.username, password: userLogin.password })
+        // const jwtoken = getUser.map((user => {
+        //     const userToken = {username: user.username, password: user.password}
+        //     console.log(userToken);
+            // const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET,{expiresIn:'30s'})
+        //     // return accessToken
+        //     res.json(accessToken)
+        // }))
+        // res.json({jwtoken})
+        
         const getUserLoginRole = getUser.map((user => user.role))
 
         if (getUser.length > 0) {
-            // const accessToken = jwt.sign(getUser, process.env.ACCESS_TOKEN_SECRET,{
-            //     expiresIn:'15s'
-            // })
-            // res.json({accessToken})
-            if(getUserLoginRole == 'admin') {
+            if (getUserLoginRole == 'admin') {
                 res.redirect('/manaInterface')
-            }else{
+            } else {
                 res.redirect('/')
             }
         } else {
-            res.redirect('/login')
+            res.sendStatus(404)
         }
-
     } catch (error) {
         res.status(500).send({ message: error.message || "Error Occured" });
     }

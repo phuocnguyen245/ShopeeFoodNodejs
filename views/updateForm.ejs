@@ -8,7 +8,6 @@
 
 
 <div class="container">
-    
     <% shop.forEach((input)=>{ %> 
         <form action="/manaInterface/updateById/<%- input._id %>?_method=PUT" enctype="multipart/form-data" method="POST">
             <input type="hidden" name="_method" value="PUT">
